@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}تکمیل سفارش{% endblock %}
+
+{% block content %}
+<section class="checkout">
+  <h2>سفارش شما با موفقیت ثبت شد</h2>
+  <p>از خرید شما سپاسگزاریم. پیامک تأیید ارسال خواهد شد.</p>
+  <a class="btn" href="{{ url_for('index') }}">بازگشت به فروشگاه</a>
+</section>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}فروشگاه آنلاین{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <h1 class="logo">فروشگاه هوشمند</h1>
+        <nav>
+          <a href="{{ url_for('index') }}">خانه</a>
+          <a href="{{ url_for('view_cart') }}">سبد خرید</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+      <div class="container">© ۱۴۰۳ فروشگاه هوشمند</div>
+    </footer>
+  </body>
+</html>
