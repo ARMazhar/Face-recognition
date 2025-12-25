@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}فروشگاه آنلاین{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">تجربه خرید ساده و سریع</p>
+    <h2>محصولات منتخب هفته</h2>
+    <p>محصولات دیجیتال با ضمانت اصالت و ارسال سریع.</p>
+    <a class="btn" href="#products">مشاهده محصولات</a>
+  </div>
+  <div class="hero-card">
+    <p>سبد خرید شما</p>
+    <h3>{{ cart_size }} کالا</h3>
+    <a href="{{ url_for('view_cart') }}">مشاهده سبد خرید</a>
+  </div>
+</section>
+
+<section id="products" class="grid">
+  {% for product in products %}
+  <article class="product-card">
+    <img src="{{ product.image_url }}" alt="{{ product.name }}" />
+    <div class="product-info">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <div class="product-footer">
+        <span>{{ "{:,.0f}".format(product.price) }} تومان</span>
+        <form method="post" action="{{ url_for('add_to_cart') }}">
+          <input type="hidden" name="product_id" value="{{ product.id }}" />
+          <button class="btn" type="submit">افزودن به سبد</button>
+        </form>
+      </div>
+      <a class="link" href="{{ url_for('product_detail', product_id=product.id) }}">جزئیات محصول</a>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

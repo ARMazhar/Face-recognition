@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<section class="product-detail">
+  <img src="{{ product.image_url }}" alt="{{ product.name }}" />
+  <div>
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <strong>{{ "{:,.0f}".format(product.price) }} تومان</strong>
+    <form method="post" action="{{ url_for('add_to_cart') }}">
+      <input type="hidden" name="product_id" value="{{ product.id }}" />
+      <button class="btn" type="submit">افزودن به سبد خرید</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
